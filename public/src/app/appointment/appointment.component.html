@@ -1,0 +1,38 @@
+  <h1>New Appointment</h1>
+  <form (submit)='createApt()' #aptData='ngForm'>
+    <label for='date'>Date:</label>
+    <input type='date' 
+          name='date'
+          required 
+          [(ngModel)]='apt.date' 
+          #date='ngModel'>
+    <label for='time'>Time:</label>
+    <input type='time' 
+           name='time' 
+           required 
+           [(ngModel)]='apt.time' 
+           #time='ngModel'>
+    <label for='complaint'>Complaint:</label>
+    <textarea name='complaint'
+            required 
+            [(ngModel)]='apt.complaint' 
+            #complaint='ngModel'></textarea>
+    <button (click)='dash()'>Cancel</button>
+    <button type='submit' [disabled]="!aptData.valid">Book your Appointment</button>
+  </form>
+
+
+  <!-- <div class='container'>
+      <h1>New Appointment</h1>
+      <form (submit)='createApt()' #aptData='ngForm'>
+        <label for='date'>Date:</label>
+        <input type='date' name='date' required [(ngModel)]='apt.date' #date='ngModel'>
+        <label for='time'>Time:</label>
+        <input type='time' name='time' required [(ngModel)]='apt.time' #time='ngModel'>
+        <label for='complaint'>Complaint:</label>
+        <textarea name='complaint' required [(ngModel)]='apt.complaint' #complaint='ngModel'></textarea>
+        <button (click)='dash()'>Cancel</button>
+        <button type='submit' [disabled]="!aptData.valid">Add Appointment</button>
+      </form>
+    </div>
+     -->

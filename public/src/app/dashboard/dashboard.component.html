@@ -1,0 +1,26 @@
+  <div *ngIf="user.name">Hello, {{user.name}} </div> 
+  <div>
+    <button *ngIf="user.name" (click)="toLogout()">Logout</button>
+    <button class="logButton" *ngIf="!user.name" (click)="toLogout()">Login To Make an Appointment</button>
+  </div>
+  <h1>Doctor's Appointments</h1>
+  
+  <table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Patient Name</th>
+      <th>Complaint</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let apt of appointments">
+      <td>{{ apt.datetime | date:'longDate'}}</td>
+      <td>{{ apt.datetime | date:'shortTime'}}</td>
+       <td>{{ apt.patientName }} <span *ngIf="apt.patient == user._id"><button (click)="deleteApt(apt._id)" class='cancel'>Cancel</button></span> </td> 
+      <td>{{ apt.complaint }}</td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="makeApt()">Make an Appointment</button>
